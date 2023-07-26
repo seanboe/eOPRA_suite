@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: eopra-switcher
+Version: 0.0.1
+Summary: CLI interface to the eOPRA port switcher
+Home-page: https://github.com/seanboe/openServo
+Author: Sean Boerhout
+Author-email: seanboe@mit.edu
+License: MIT
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+
+# CLI for the eOPRA stimulator

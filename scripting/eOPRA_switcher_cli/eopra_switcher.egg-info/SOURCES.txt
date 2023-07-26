@@ -1,0 +1,11 @@
+README.md
+main.py
+setup.py
+eopra_switcher.egg-info/PKG-INFO
+eopra_switcher.egg-info/SOURCES.txt
+eopra_switcher.egg-info/dependency_links.txt
+eopra_switcher.egg-info/entry_points.txt
+eopra_switcher.egg-info/requires.txt
+eopra_switcher.egg-info/top_level.txt
+src/__init__.py
+src/__main__.py

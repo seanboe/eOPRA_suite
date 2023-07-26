@@ -1,0 +1,2 @@
+[console_scripts]
+eopra_switcher = main:cli
