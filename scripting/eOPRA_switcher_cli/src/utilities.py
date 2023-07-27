@@ -9,6 +9,6 @@ class USBTalk:
   def __init__(self, serial_port):
     self.serial_port = serial_port
   
-  def 
+
 
   
