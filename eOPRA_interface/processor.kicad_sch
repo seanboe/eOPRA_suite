@@ -4,6 +4,13 @@
 
   (paper "A3")
 
+  (title_block
+    (title "eOPRA Switch / Stimulation Controller")
+    (date "2023-08-01")
+    (rev "1.0")
+    (company "Massachusetts Institute of Technology / MIT Media Lab")
+  )
+
   (lib_symbols
     (symbol "0.power-symbols:+1V1" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -3.81 0)
