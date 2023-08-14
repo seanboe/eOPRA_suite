@@ -19,4 +19,9 @@
     (stroke (width 0.24) (type default)) (fill none) (layer "F.Fab") (tstamp c6c593c7-a549-4f48-9e01-02ef0aa1b9ac))
   (pad "1" thru_hole circle (at 0 0) (size 1.524 1.524) (drill 0.8) (layers "*.Cu" "*.Mask") (tstamp 2769b782-8819-41c2-b01e-9d1626cf58d7))
   (pad "2" thru_hole circle (at 7.6 0) (size 1.524 1.524) (drill 0.8) (layers "*.Cu" "*.Mask") (tstamp 57fdffdf-65d8-4eec-b7b4-576accd4a411))
+  (model "${KIPRJMOD}/project_models/buzzer.step"
+    (offset (xyz 3.75 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz -90 0 0))
+  )
 )
