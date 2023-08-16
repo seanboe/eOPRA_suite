@@ -1,4 +1,4 @@
-2266001242663629
+2267764525564033
 0_Fiducial
 Fiducial_0.5mm_Mask1.5mm
 Circular Fiducial, 0.5mm bare copper, 1.5mm soldermask opening
@@ -9789,6 +9789,13 @@ project_footprints
 JST_BM02B_GHS_TB
 
 
+0
+4
+2
+project_footprints
+JST_SM02B_GHS_TB
+
+SM02BGHSTBLFSN 
 0
 4
 2
