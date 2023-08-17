@@ -1,4 +1,4 @@
-2267764525564033
+2269459048568660
 0_Fiducial
 Fiducial_0.5mm_Mask1.5mm
 Circular Fiducial, 0.5mm bare copper, 1.5mm soldermask opening
@@ -9779,6 +9779,13 @@ BUZZER
 2
 2
 project_footprints
+ESP8266-12E_ESP-12E
+
+
+0
+22
+22
+project_footprints
 G3VM-351VY1-TR05
 
 
@@ -9847,7 +9854,7 @@ QFN50P250X350X100-17N
 
 0
 17
-17
+16
 project_footprints
 SOD-323
 

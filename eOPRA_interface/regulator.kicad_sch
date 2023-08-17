@@ -1189,7 +1189,7 @@
     (property "Datasheet" "" (at 31.75 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid ceddb6b6-2f57-4b33-b10a-dd320fe921ac))
+    (pin "1" (uuid e29127c1-bdb6-40cd-bb61-00f05faba7dd))
     (instances
       (project "eOPRA_interface"
         (path "/9f7a57db-2daa-452d-a1aa-74a4ad8115df/16a508a1-14d6-439d-afb0-bad239c786d4"
@@ -1471,7 +1471,7 @@
     (property "Datasheet" "" (at 39.37 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 2a9a5880-6a74-47e3-b131-7ab0e1eec4ca))
+    (pin "1" (uuid f4cb635d-8a24-425f-afee-62e1e5320b8a))
     (instances
       (project "1.0"
         (path "/628082f8-0394-4f00-be88-5631e8394d3a/6fab7c9f-ac4d-49b1-a7fd-4592113b9455"

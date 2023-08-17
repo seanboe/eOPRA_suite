@@ -537,6 +537,10 @@
     [
       "a184413b-e455-471d-9900-996aedf52280",
       "peripherals"
+    ],
+    [
+      "1b9b8a64-8ad1-4ef8-9271-b6c9acfe3877",
+      "ESP-Wifi"
     ]
   ],
   "text_variables": {}

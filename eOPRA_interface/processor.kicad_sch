@@ -1523,7 +1523,6 @@
 
   (no_connect (at 310.515 149.225) (uuid 0abbfe06-307a-411c-bcfb-ac8afbb003e0))
   (no_connect (at 339.725 149.225) (uuid 2f99fd0e-6f77-4148-b0fb-62abefb92b01))
-  (no_connect (at 226.06 120.015) (uuid 9f393bcc-87d2-4c28-b428-eec10e47eae7))
   (no_connect (at 339.725 102.87) (uuid a421dbe4-46ef-4950-aca6-37344bbffa3b))
   (no_connect (at 310.515 151.765) (uuid cde32e22-5509-431d-bddd-d6667f0943db))
 
@@ -2798,6 +2797,10 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 35da59cc-24d6-4453-884e-55af63fa657f)
   )
+  (hierarchical_label "ESP_INT" (shape output) (at 226.06 120.015 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid 3f2b6677-bd00-4c40-a5dc-518affbcc27b)
+  )
   (hierarchical_label "TFT_DC" (shape output) (at 226.06 114.935 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 478566c6-7c29-426c-8973-939f06ec0852)
@@ -3534,6 +3537,32 @@
     )
   )
 
+  (symbol (lib_id "2.passive:C") (at 358.14 111.76 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 51f68170-3089-4564-be58-43b7965cddac)
+    (property "Reference" "C33" (at 361.061 111.1163 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "1uF" (at 361.061 113.0373 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "2_Passives_Resistors_SMD_IPC:R_1005_402_A" (at 359.1052 115.57 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 358.14 111.76 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 0f9d363a-40ab-47c8-b6f1-f3b841a73864))
+    (pin "2" (uuid 743cc5c4-a4d5-4532-b62c-3048c31c2c44))
+    (instances
+      (project "eOPRA_interface"
+        (path "/9f7a57db-2daa-452d-a1aa-74a4ad8115df/d165d604-1acf-4179-9574-6e327e7130e7"
+          (reference "C33") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "2.passive:R") (at 36.83 244.475 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5df456d1-7222-4243-ae50-9cf773ef0df8)
@@ -4035,32 +4064,6 @@
       (project "eOPRA_interface"
         (path "/9f7a57db-2daa-452d-a1aa-74a4ad8115df/d165d604-1acf-4179-9574-6e327e7130e7"
           (reference "#PWR027") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "2.passive:C") (at 358.14 111.76 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 8e33a41b-78ef-4472-984c-cea43dcf8a54)
-    (property "Reference" "C33" (at 361.061 111.1163 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "1uF" (at 361.061 113.0373 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "2_Passives_Resistors_SMD_IPC:R_1005_402_A" (at 359.1052 115.57 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 358.14 111.76 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid c9acea09-18b5-466f-989b-c6b87eb715d3))
-    (pin "2" (uuid 2306e77a-706b-4d56-869f-8e5821b17085))
-    (instances
-      (project "eOPRA_interface"
-        (path "/9f7a57db-2daa-452d-a1aa-74a4ad8115df/d165d604-1acf-4179-9574-6e327e7130e7"
-          (reference "C33") (unit 1)
         )
       )
     )

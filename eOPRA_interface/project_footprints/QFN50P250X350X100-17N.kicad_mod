@@ -36,6 +36,7 @@
     (stroke (width 0.12) (type solid)) (layer "F.Fab") (tstamp fd29f40c-da06-4c0f-bb56-16a9675ea8e8))
   (fp_line (start 1.75 1.25) (end -1.75 1.25)
     (stroke (width 0.12) (type solid)) (layer "F.Fab") (tstamp 4af2d526-2968-4720-b236-209eb9f4568e))
+  (pad "" smd rect (at 0 0) (size 2.15 1.15) (layers "F.Cu" "F.Mask") (tstamp f0ed9dde-98a2-4c5b-8315-4002517f9974))
   (pad "1" smd oval (at -1.7 0.25 180) (size 0.85 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp ab392348-cf1f-4ae9-a95c-9888d6e5a033))
   (pad "2" smd oval (at -1.25 1.2 90) (size 0.85 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 9f289ab2-89c4-4084-956a-c2a422e2d034))
   (pad "3" smd oval (at -0.75 1.2 90) (size 0.85 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 4c18d1a8-92b4-4be8-8cf8-58ba21fb9705))
@@ -52,7 +53,6 @@
   (pad "14" smd oval (at -0.75 -1.2 90) (size 0.85 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 4ce6c3e8-f66d-4e5c-93d6-a8a3a28929de))
   (pad "15" smd oval (at -1.25 -1.2 90) (size 0.85 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 306b6a3e-cfbb-4079-b468-43fc76b067b5))
   (pad "16" smd oval (at -1.7 -0.25 180) (size 0.85 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 93e07f14-8c9d-48b9-94f8-13dee49e1cc6))
-  (pad "17" smd rect (at 0 0) (size 2.15 1.15) (layers "F.Cu" "F.Mask") (tstamp f0ed9dde-98a2-4c5b-8315-4002517f9974))
   (model "${KIPRJMOD}/project_models/74HC4051BQ_115.step"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
