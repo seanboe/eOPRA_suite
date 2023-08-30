@@ -29,7 +29,7 @@
     (stroke (width 0.06) (type default)) (layer "F.CrtYd") (tstamp a5fe356a-b506-48be-9ad2-b0afae79974e))
   (fp_line (start 3.4 -3.325) (end 3.4 3.4)
     (stroke (width 0.06) (type default)) (layer "F.CrtYd") (tstamp e71b41f0-bcdb-4e63-bcd2-03dfe93a853f))
-  (fp_line (start 3.4 3.4) (end 3.07 3.4)
+  (fp_line (start 3.4 3.4) (end 3.05 3.4)
     (stroke (width 0.06) (type default)) (layer "F.CrtYd") (tstamp f31c913f-2e64-4ded-bed1-1e89aecc47cc))
   (fp_line (start -2.5 4) (end -2 3.5)
     (stroke (width 0.12) (type default)) (layer "F.Fab") (tstamp c865f073-da4e-4ee0-a5a4-ec132167160e))
@@ -69,4 +69,9 @@
   (pad "" thru_hole circle (at 2.58 2.58) (size 1.2 1.2) (drill 0.9) (layers "*.Cu" "*.Mask") (tstamp 0ab2ce0d-a724-4963-aaef-3ed9bfcee969))
   (pad "1" thru_hole circle (at -2.5 -2.5) (size 1.2 1.2) (drill 0.9) (layers "*.Cu" "*.Mask") (tstamp 93d7b887-7aeb-4acc-a73f-37b9d9a35e3e))
   (pad "2" thru_hole circle (at 2.58 -2.5) (size 1.2 1.2) (drill 0.9) (layers "*.Cu" "*.Mask") (tstamp ac7e78f0-89a6-431b-92b1-bd5a32f0a0b2))
+  (model "${KIPRJMOD}/project_models/A11AH.stp"
+    (offset (xyz 0 -7 3))
+    (scale (xyz 1 1 1))
+    (rotate (xyz -90 0 0))
+  )
 )

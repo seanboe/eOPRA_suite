@@ -1,4 +1,4 @@
-2269459048568660
+2273120799536957
 0_Fiducial
 Fiducial_0.5mm_Mask1.5mm
 Circular Fiducial, 0.5mm bare copper, 1.5mm soldermask opening
@@ -9863,6 +9863,13 @@ SOD-323
 2
 2
 project_footprints
+SON_8DU-T1-GE3_VIS
+
+SI5419DU-T1-GE3 
+0
+10
+3
+project_footprints
 TFT_BOB
 
 
@@ -9876,3 +9883,10 @@ TL3365AF180QG
 0
 4
 4
+project_footprints
+YJN3_TEX
+
+CSD25501F3T 
+0
+3
+3
