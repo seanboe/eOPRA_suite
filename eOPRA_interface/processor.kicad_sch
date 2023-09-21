@@ -4354,7 +4354,7 @@
   )
 
   (symbol (lib_id "2.passive:C") (at 394.335 132.08 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom yes) (on_board yes) (dnp yes)
     (uuid 8f0c588e-a807-49eb-b689-9a4c6c596c45)
     (property "Reference" "C24" (at 387.35 131.429 0)
       (effects (font (size 1.27 1.27)) (justify right))
@@ -5032,7 +5032,7 @@
   )
 
   (symbol (lib_id "2.passive:C") (at 375.285 132.08 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom yes) (on_board yes) (dnp yes)
     (uuid c9e8c386-70ce-4999-8917-32f6eec1f2d2)
     (property "Reference" "C23" (at 368.3 131.429 0)
       (effects (font (size 1.27 1.27)) (justify right))
