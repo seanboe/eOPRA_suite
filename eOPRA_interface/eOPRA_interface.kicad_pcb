@@ -5591,7 +5591,7 @@
       (net 151 "/processor/MISO1") (pinfunction "MISO") (pintype "output") (tstamp caf68669-1515-46bd-ba0b-54b7f4216648))
     (pad "29" smd rect (at 0 0 225) (size 4.2 4.2) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 207 "GNDISO2") (pinfunction "EP") (pintype "passive") (tstamp f044c20d-eb66-45de-8546-cafac20e92cf))
-    (model "eec.models/Microchip_-_MCP25625-E/ML.step"
+    (model "${KIPRJMOD}/project_models/MCP25625.step"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6123,10 +6123,10 @@
       (net 4 "+3V3") (pinfunction "VCC") (pintype "power_in") (tstamp 19de494f-28db-408f-900c-3e12e1f4b1d5))
     (pad "10" thru_hole circle (at 0 3.175) (size 1.5 1.5) (drill 0.9) (layers "*.Cu" "*.Mask")
       (net 180 "GND") (pinfunction "GND") (pintype "power_in") (tstamp cf747400-8e4c-4bf0-8b61-65bad7a35fec))
-    (model "${KIPRJMOD}/project_models/LCD.step" hide
-      (offset (xyz 53.25 -31.75 9))
+    (model "${KIPRJMOD}/project_models/LCD.step"
+      (offset (xyz -2.5 2.5 9))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 180 0))
+      (rotate (xyz -90 0 0))
     )
   )
 
