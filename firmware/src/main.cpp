@@ -1,27 +1,52 @@
 #include <Arduino.h>
 
+#include <PinDefs.h>
+#include <TrafficControl.h>
 
-#define ENCODER_A   1
-#define ENCODER_B   2
-
-bool aHigh;
-
-long position;
+TrafficControl trafficController = TrafficControl();
 
 void setup() {
-  // put your setup code here, to run once:
 
-  pinMode(ENCODER_A, INPUT);
-  pinMode(ENCODER_A, INPUT);
+  // while(!Serial) {
+  //   ;
+  // }
 
-  // a = digitalRead(aHigh);
-  // b = digitalRead(bHigh);
+  // Serial.println(5, HEX);
+  
+  // while(!Serial.available()) {
+  //   ;
+  // }
+  // Serial.println("right here");
 
-  position = 0;
+  // char comm_buffer[Serial.available()];
+
+  // Serial.println(Serial.available());
+
+  // Serial.println(sizeof(comm_buffer) / sizeof(char));
+
+  // Serial.println(comm_buffer);
+
+  trafficController.init(112500);
+
 
 }
 
 void loop() {
+
+  trafficController.checkReceive();
+  // Serial.println("hi");
+
+
+  // if (Serial.available() > 0) {
+  //   char comm_buffer[Serial.available()];
+  //   Serial.println(Serial.available());
+
+  //   Serial.println(sizeof(comm_buffer) / sizeof(char));
+
+  //   uint16_t a = (uint16_t)comm_buffer[0, sizeof(comm_buffer) / sizeof(char)];
+
+  //   Serial.println(a, HEX);
+  // }
 
   // if (digitalRead(ENCODER_A) != aHigh) {
   //   if (digitalRead(ENCODER_A) && !digitalRead(ENCODER_B)) {
