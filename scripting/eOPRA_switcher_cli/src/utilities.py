@@ -41,6 +41,7 @@ class USBTalk:
 
     # self.serial_device.write(bytearray([1, 2, 3]))
     print(bytearray(message))
+    print(message[1])
     self.serial_device.write(bytearray(message))
     # self.serial_device.flush()
 
