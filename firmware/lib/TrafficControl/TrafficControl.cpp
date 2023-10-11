@@ -1,5 +1,7 @@
 #include "TrafficControl.h"
 
+// See later: https://community.platformio.org/t/how-to-run-freertos-only-on-first-core-on-the-esp32-wroom-framework-is-esp-idf/26472
+
 TrafficControl::TrafficControl() {};
 
 bool TrafficControl::init(int baudrate) {
@@ -10,7 +12,7 @@ bool TrafficControl::init(int baudrate) {
 };
 
 bool TrafficControl::checkReceive() {
-  if (Serial.available()) {
+  if (Serial.available() > 0) {
 
     if (Serial.available() > MAX_BUFFER) {
       return false;
@@ -19,29 +21,26 @@ bool TrafficControl::checkReceive() {
     uint8_t buffSize = Serial.available();
     char buffer[buffSize];
     memset(buffer, 0, buffSize);
-    Serial.println("4");
+    Serial.readBytes(buffer, buffSize);
 
-    // Serial.readBytes(buffer, buffSize);
-    // Serial.println(buffer);
-
-    char start[2] = {buffer[0], '\0'};
-    // Serial.println(buffer);
-
-    if (atoi(start) != START) {
+    if ((uint8_t)buffer[0] != START) {
       return false;
     }
 
     char randCheckChar[] = {buffer[1], '\0'};
     uint8_t randCheck = atoi(randCheckChar);
 
-    // Serial.write(String(randCheck, 3).c_str());
+    uint8_t dataQueue[buffSize - 3]; // 3 Accounts for the start, check, and stop 
+    memset(dataQueue, 0, buffSize - 3);
 
-    // uint8_t dataQueue[MAX_BUFFER];
-    // memset(dataQueue, STOP, MAX_BUFFER);
+    for (int x = 0; x < buffSize - 3; x++) {
+      if ((uint8_t)buffer[x + 2] == STOP) {
+        break;
+      }
+      dataQueue[x] = (uint8_t)buffer[x + 2];
+    }
 
-    // for (int x = 2; x < buffSize; x++) {  
-    //   dataQueue[x - 2] = (uint8_t) atoi((char[]){buffer[x], '\0'});
-    // }
+    Serial.write((char *)dataQueue);
 
     delay(1000);
   };
@@ -50,5 +49,5 @@ bool TrafficControl::checkReceive() {
 
 
 void TrafficControl::execute(uint8_t * dataQueue) {
-  Serial.write(dataQueue[0]);
+
 }
