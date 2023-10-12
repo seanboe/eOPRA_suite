@@ -12,6 +12,9 @@ set_debug: 0x14
 set_display: 0x15
 set_buzzer: 0x16
 
+
+
+
 # Get Commands
 get_time: 0x50
 get_devices: 0x51

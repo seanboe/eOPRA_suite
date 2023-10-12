@@ -11,5 +11,8 @@ Classifier: Operating System :: OS Independent
 Requires-Python: >=3.7
 Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: click>=8.0.1
+Requires-Dist: pyserial>=3.5
+Requires-Dist: PyYAML>=6.0.0
 
 # CLI for the eOPRA stimulator
