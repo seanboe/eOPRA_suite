@@ -1,8 +1,8 @@
 import serial
 import yaml
 import click
-import numpy as np
-import time
+# import numpy as np
+import random
 
 
 class USBTalk:
@@ -31,7 +31,8 @@ class USBTalk:
     """
 
     message = [self.comm_commands["start"]]
-    message.append(np.random.randint(0, 255))
+    message.append(random.randint(0, 255))
+    print("Random number:", message[1])
     message.extend(data)
     message.append(self.comm_commands["stop"])
 

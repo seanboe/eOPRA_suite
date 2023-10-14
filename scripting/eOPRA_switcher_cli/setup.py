@@ -5,7 +5,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
     requirements = fh.read()
 setup(
     name = 'eopra_switcher',
-    version = '0.0.1',
+    version = '0.0.4',
     author = 'Sean Boerhout',
     author_email = 'seanboe@mit.edu',
     license = 'MIT',

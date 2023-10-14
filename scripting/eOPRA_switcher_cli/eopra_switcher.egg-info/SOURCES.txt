@@ -1,6 +1,8 @@
 LICENSE
+MANIFEST.in
 README.md
 main.py
+requirements.txt
 setup.py
 eopra_switcher.egg-info/PKG-INFO
 eopra_switcher.egg-info/SOURCES.txt

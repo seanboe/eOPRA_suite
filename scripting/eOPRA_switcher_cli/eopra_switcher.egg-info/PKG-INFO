@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: eopra-switcher
-Version: 0.0.1
+Version: 0.0.4
 Summary: CLI interface to the eOPRA port switcher
 Home-page: https://github.com/seanboe/openServo
 Author: Sean Boerhout
@@ -11,8 +11,33 @@ Classifier: Operating System :: OS Independent
 Requires-Python: >=3.7
 Description-Content-Type: text/markdown
 License-File: LICENSE
-Requires-Dist: click>=8.0.1
-Requires-Dist: pyserial>=3.5
-Requires-Dist: PyYAML>=6.0.0
+Requires-Dist: build==1.0.3
+Requires-Dist: certifi==2023.7.22
+Requires-Dist: charset-normalizer==3.3.0
+Requires-Dist: click==8.1.6
+Requires-Dist: docutils==0.20.1
+Requires-Dist: idna==3.4
+Requires-Dist: importlib-metadata==6.8.0
+Requires-Dist: jaraco.classes==3.3.0
+Requires-Dist: keyring==24.2.0
+Requires-Dist: markdown-it-py==3.0.0
+Requires-Dist: mdurl==0.1.2
+Requires-Dist: more-itertools==10.1.0
+Requires-Dist: nh3==0.2.14
+Requires-Dist: numpy==1.26.0
+Requires-Dist: packaging==23.2
+Requires-Dist: pkginfo==1.9.6
+Requires-Dist: Pygments==2.16.1
+Requires-Dist: pyproject_hooks==1.0.0
+Requires-Dist: pyserial==3.5
+Requires-Dist: PyYAML==6.0.1
+Requires-Dist: readme-renderer==42.0
+Requires-Dist: requests==2.31.0
+Requires-Dist: requests-toolbelt==1.0.0
+Requires-Dist: rfc3986==2.0.0
+Requires-Dist: rich==13.6.0
+Requires-Dist: twine==4.0.2
+Requires-Dist: urllib3==2.0.6
+Requires-Dist: zipp==3.17.0
 
 # CLI for the eOPRA stimulator

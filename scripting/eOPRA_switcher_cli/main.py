@@ -31,68 +31,73 @@ def cli(usb_device, port, baud_rate):
 
   
 
-
 @cli.command()
-@click.option('--time', '-t', default='', help='Set the internal time')
-@click.option('--stim_on', '-p', default=1, help='Set stimulation on')
-@click.option('--stim_port', '-sp', default=8, help='Set the stimulation port')
-@click.option('--tft_on', '-tft', default=1, help='Set the tft on/off')
-@click.option('--broadcast_on', '-b', default=1, help='Set MQTT broadcasting on/off')
-@click.option('--debug_on', '-b', default=1, help='Set debugging on/off')
-@click.option('')
 @usb_device
-def set(usb_device):
-  """
-  configure variables on the device
-  """
+def write_read(usb_device):
   click.echo(usb_device.write_read([0x05, 0x07]))
 
 
-@cli.command()
-@click.option('--time', '-t', default='', help='Get the internal time')
-@click.option('--stim_on', '-p', default='', help='Get stimulation enable status')
-@click.option('--stim_port', '-sp', default='', help='Get the enabled stimulation port')
-@click.option('--tft_on', '-tft', default='', help='Get the tft status')
-@click.option('--broadcast_on', '-b', default='', help='Get MQTT broadcasting status')
-@click.option('--debug_on', '-b', default='', help='Get debug enable status')
-@click.option('--devices', 'd', default='', help='Get the connected devices')
-@usb_device
-def get(usb_device):
-  pass
+# @cli.command()
+# @click.option('--time', '-t', default='', help='Set the internal time')
+# @click.option('--stim_on', '-p', default=1, help='Set stimulation on')
+# @click.option('--stim_port', '-sp', default=8, help='Set the stimulation port')
+# @click.option('--tft_on', '-tft', default=1, help='Set the tft on/off')
+# @click.option('--broadcast_on', '-b', default=1, help='Set MQTT broadcasting on/off')
+# @click.option('--debug_on', '-b', default=1, help='Set debugging on/off')
+# @click.option('')
+# @usb_device
+# def set(usb_device):
+#   """
+#   configure variables on the device
+#   """
+#   click.echo(usb_device.write_read([0x05, 0x07]))
 
 
-@cli.command()
-@usb_device
-def broadcast(usb_device):
-  """
-  Broadcast commands from one device to another over MQTT
-  """
-  pass
+# @cli.command()
+# @click.option('--time', '-t', default='', help='Get the internal time')
+# @click.option('--stim_on', '-p', default='', help='Get stimulation enable status')
+# @click.option('--stim_port', '-sp', default='', help='Get the enabled stimulation port')
+# @click.option('--tft_on', '-tft', default='', help='Get the tft status')
+# @click.option('--broadcast_on', '-b', default='', help='Get MQTT broadcasting status')
+# @click.option('--debug_on', '-b', default='', help='Get debug enable status')
+# @click.option('--devices', 'd', default='', help='Get the connected devices')
+# @usb_device
+# def get(usb_device):
+#   pass
+
+
+# @cli.command()
+# @usb_device
+# def broadcast(usb_device):
+#   """
+#   Broadcast commands from one device to another over MQTT
+#   """
+#   pass
 
 
 
 
-def read_config():
-  pass
+# def read_config():
+#   pass
   
-def write_config():
-  pass
+# def write_config():
+#   pass
 
 
-def read_ports():
-  pass
+# def read_ports():
+#   pass
 
-def write_ports():
-  pass
+# def write_ports():
+#   pass
 
-def verify_net_comms():
-  pass
+# def verify_net_comms():
+#   pass
 
 
-@cli.result_callback()
-@usb_device
-def terminator(device, result, **kwargs):
-  try:
-    usb_device.serial_device.close()
-  except:
-    click.echo('Unable to close serial port.')  
+# @cli.result_callback()
+# @usb_device
+# def terminator(device, result, **kwargs):
+#   try:
+#     usb_device.serial_device.close()
+#   except:
+#     click.echo('Unable to close serial port.')  

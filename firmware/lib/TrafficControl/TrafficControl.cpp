@@ -27,8 +27,8 @@ bool TrafficControl::checkReceive() {
       return false;
     }
 
-    char randCheckChar[] = {buffer[1], '\0'};
-    uint8_t randCheck = atoi(randCheckChar);
+    // char randCheckChar[] = {buffer[1], '\0'};
+    // uint8_t randCheck = atoi(randCheckChar);
 
     uint8_t dataQueue[buffSize - 3]; // 3 Accounts for the start, check, and stop 
     memset(dataQueue, 0, buffSize - 3);
@@ -40,7 +40,8 @@ bool TrafficControl::checkReceive() {
       dataQueue[x] = (uint8_t)buffer[x + 2];
     }
 
-    Serial.write((char *)dataQueue);
+    // Serial.write((char *)dataQueue);
+    Serial.write((uint8_t)buffer[1]);
 
     delay(1000);
   };
