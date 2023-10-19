@@ -17,9 +17,9 @@
 #define MASTER_SCL0   21
 
 // SPI
-#define EXT_SCK0      2
-#define EXT_MOSI0     3
-#define EXT_MISO0     4
+#define EXT_SWCK1      10
+#define EXT_MOSI1      11
+#define EXT_MISO1      12
 
 // CAN
 #define CAN_STBY      16
@@ -41,10 +41,11 @@
 // TFT
 #define TFT_DC        5
 #define SD_CS         6
+#define TFT_SCK0      2
+#define TFT_MOSI0     3
+#define TFT_MISO0     4
 #define TFT_CS        9         // CAN ALSO ACT AS RP2040 SLAVE CS
-#define TFT_SCK1      10
-#define TFT_MOSI1     11
-#define TFT_MISO1     12
+#define TFT_RESET     -1        // -1 means unused
 
 // DECODER
 #define ENC_CTL_0     13
