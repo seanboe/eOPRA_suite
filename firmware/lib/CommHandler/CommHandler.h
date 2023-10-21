@@ -8,7 +8,7 @@ class CommHandler {
     CommHandler();
 
     virtual bool init();
-    virtual bool checkReceive();
+    virtual bool receiveRespond(uint8_t receive_respond);
 
   private:
     void decode();

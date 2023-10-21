@@ -7,5 +7,5 @@ CommHandler::CommHandler(){};
 bool CommHandler::init(){};
 
 // To be redefined in child classes
-bool CommHandler::checkReceive(){};
+bool CommHandler::receiveRespond(){};
 
