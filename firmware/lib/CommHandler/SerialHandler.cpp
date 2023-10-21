@@ -4,14 +4,14 @@
 
 TrafficControl::TrafficControl() {};
 
-bool TrafficControl::init(int baudrate) {
+bool SerialHandler::init(int baudrate) {
 
   Serial.begin(baudrate);
 
   return true;
 };
 
-bool TrafficControl::checkReceive() {
+bool SerialHandler::checkReceive() {
   if (Serial.available() > 0) {
 
     if (Serial.available() > MAX_BUFFER) {
@@ -49,6 +49,6 @@ bool TrafficControl::checkReceive() {
 };
 
 
-void TrafficControl::execute(uint8_t * dataQueue) {
+void SerialHandler::execute(uint8_t * dataQueue) {
 
 }

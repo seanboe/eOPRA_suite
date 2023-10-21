@@ -8,6 +8,14 @@
 #include <Wire.h>
 
 
+
+
+
+
+
+
+
+
 void requestEvent();
 
 void setup() {
@@ -49,6 +57,7 @@ void loop1() {
 
   delay(500);
 }
+
 
 
 

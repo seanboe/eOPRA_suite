@@ -1,5 +1,5 @@
 with open('CommCodes.yaml', 'r') as yaml_settings:
-  with open('./lib/TrafficControl/CommCodes.h', 'w') as CommCodes_h:
+  with open('./lib/CommCodes.h', 'w') as CommCodes_h:
 
     CommCodes_h.write("// ****** GENERATED ON COMPILE ******\n")
     CommCodes_h.write("\n")
