@@ -3,3 +3,5 @@ eOPRA_interface/eOPRA_interface-backups
 .DS_Store
 scripting/.DS_Store
 scripting/eOPRA_switcher_cli/src/code_structure.md
+scripting/tools/.venv
+scripting/tools/.venv

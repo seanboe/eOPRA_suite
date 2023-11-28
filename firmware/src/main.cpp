@@ -17,51 +17,35 @@ void receiveEvent(int bytes);
 
 volatile bool ISRTriggered;
 
-void ISRHandler() {
-  ISRTriggered = true;
-  setStimulationPort(port);
-}
-
 void setup() {
   // Wire.setSDA(MASTER_SDA0);
   // Wire.setSCL(MASTER_SCL0);
   Serial.begin(9600);
   Wire.begin(8);                // join i2c bus with address #8
   // Wire.onRequest(requestEvent); // register event
-  Wire.onReceive(receiveEvent);
-  port = 8;
 
-  pinMode(A_IN_2_PIN, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(A_IN_2_PIN), ISRHandler, FALLING);
-  ISRTriggered = false;
+
+
+  Wire.onReceive(receiveEvent);
 }
 
 void loop() {
 
-  if (ISRTriggered) {
-    Serial.println("Triggered");
-    ISRTriggered = false;
-  }
   delay(100);
 }
 
-// function that executes whenever data is requested by master
-// this function is registered as an event, see setup()
-void requestEvent() {
-  Wire.write("hello "); // respond with message of 6 bytes
-  // as expected by master
-}
-
 void receiveEvent(int bytes) {
+  uint8_t buffer[20];
   if (Wire.available()) {
-    port = Wire.read();
+    // port = Wire.read();
+    Wire.readBytes(buffer, bytes);
+    // Serial.println("here");
   }
-  // Serial.println(bytes);
-  // if (Wire.available()) {
-  //   char buffer[10];
-  //   Wire.readBytes(buffer, Wire.available());
-  //   Serial.println(buffer);
-  // }
+
+  for (int x = 0; x < bytes; x++) {
+    Serial.println(buffer[x]);
+  }
+
 }
 
 
@@ -70,32 +54,17 @@ void receiveEvent(int bytes) {
 
 #include <SwitcherI2C.h>
 
-// SwitcherI2C switcher = SwitcherI2C();
+SwitcherI2C switcher = SwitcherI2C();
 
 void setup1() {
-  // Wire.setSDA(MASTER_SDA0);
-  // Wire.setSCL(MASTER_SCL0);
-  Wire1.begin();        // join i2c bus (address optional for master)
-  // switcher.init(8);
-  // Serial.begin(9600);  // start serial for output
+  switcher.init(8);
 }
 
 void loop1() {
 
-  // uint8_t data = {10};
-  // switcher.write(&data);
-
-  Wire1.beginTransmission(8);
-  Wire1.write(10);
-  Wire1.endTransmission();
-  // // Serial.println("Sent hello!");
-
-  // // Wire1.requestFrom(8, 6);    // request 6 bytes from peripheral device #8
-
-  // while (Wire1.available()) { // peripheral may send less than requested
-  //   char c = Wire1.read(); // receive a byte as character
-  //   Serial.print(c);         // print the character
-  // }
+  uint8_t data[] = {10, 2, 3, 4};
+  // Serial.println(sizeof(data) / sizeof(uint8_t));
+  switcher.write(data, 4);
 
   delay(500);
 }

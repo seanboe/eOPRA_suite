@@ -12,7 +12,7 @@ class SwitcherI2C {
 
     bool init(uint8_t peripheralAddress);
 
-    bool write(uint8_t * buffer);
+    bool write(uint8_t * data, uint8_t dataSize);
 
   private:
 
