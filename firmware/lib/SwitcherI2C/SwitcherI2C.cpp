@@ -18,7 +18,6 @@ bool SwitcherI2C::init(uint8_t peripheralAddress) {
 // Keep in mind that the maximum buffer size is defined by MAX_BUFFER
 bool SwitcherI2C::write(uint8_t * data, uint8_t dataSize) {
   uint8_t buffSize = dataSize + 3;
-  Serial.println(buffSize);
 
   if (buffSize > MAX_BUFFER)
     return false;

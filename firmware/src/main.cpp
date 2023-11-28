@@ -15,7 +15,7 @@ volatile uint8_t port;
 void requestEvent();
 void receiveEvent(int bytes);
 
-volatile bool ISRTriggered;
+volatile bool read;
 
 void setup() {
   // Wire.setSDA(MASTER_SDA0);
@@ -27,29 +27,37 @@ void setup() {
 
 
   Wire.onReceive(receiveEvent);
+  read = false;
 }
 
 void loop() {
 
-  delay(100);
+  // if (read) {
+  //   Wire.print("Hello");
+  //   read = false;
+  // }
+
+  // delay(100);
 }
 
-void receiveEvent(int bytes) {
+void receiveEvent(int bytes) { 
+  
   uint8_t buffer[20];
   if (Wire.available()) {
     // port = Wire.read();
     Wire.readBytes(buffer, bytes);
-    // Serial.println("here");
+    Serial.println("here");
   }
 
-  for (int x = 0; x < bytes; x++) {
-    Serial.println(buffer[x]);
-  }
+  // for (int x = 0; x < bytes; x++) {
+  //   Serial.println(buffer[x]);
+  // }
+
+  Wire.beginTransmission(0);
+  Wire.write("Hello");
+  Wire.endTransmission();
 
 }
-
-
-
 
 
 #include <SwitcherI2C.h>
@@ -65,6 +73,13 @@ void loop1() {
   uint8_t data[] = {10, 2, 3, 4};
   // Serial.println(sizeof(data) / sizeof(uint8_t));
   switcher.write(data, 4);
+
+  if (Wire1.available()) {
+    Serial.println("got something bcak");
+    // char stuff[15];
+    // Wire1.readBytes(stuff, 5);
+    // Serial.println(Wire1.readString());
+  }
 
   delay(500);
 }
