@@ -8,17 +8,18 @@
 
 // Still under construction!
 
-// #include "CommHandler.h"
+#include "CommHandler.h"
 
-// For now, set I2C Handler up only to be a peripheral to another device without responses
-
-class I2CHandler {
+class I2CHandler : CommHandler {
   public:
     I2CHandler();
 
-    bool init(uint8_t address);
+    bool init();
 
-    bool onRequest(uint8_t * data, uint8_t len);
+    // bool onRequest(uint8_t * data, uint8_t len);
+    bool request(uint8_t addr, uint8_t * commands, uint8_t lenCommands, uint8_t reqSize);
+
+    bool checkResponse();
 
   private:
 

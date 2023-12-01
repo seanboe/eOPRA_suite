@@ -1,89 +1,109 @@
 
-
-
-
 #include <Arduino.h>
 #include "PinDefs.h"
+#include <I2CHandler.h>
 
 #include <Wire.h>
 #include <../lib/CommCodes.h>
 #include "utilities.h"
 
+#define REC_INT ESP_INT
+#define ESP_ADDR 8
+void espCallback();
 
-volatile uint8_t port;
+I2CHandler WifiHandler = I2CHandler();
 
-void requestEvent();
-void receiveEvent(int bytes);
-
-volatile bool read;
 
 void setup() {
-  // Wire.setSDA(MASTER_SDA0);
-  // Wire.setSCL(MASTER_SCL0);
   Serial.begin(9600);
-  Wire.begin(8);                // join i2c bus with address #8
-  // Wire.onRequest(requestEvent); // register event
 
+  pinMode(REC_INT, INPUT_PULLUP);
+  attachInterrupt(REC_INT, espCallback, RISING);
 
+  WifiHandler.init();
 
-  Wire.onReceive(receiveEvent);
-  read = false;
 }
 
 void loop() {
-
-  // if (read) {
-  //   Wire.print("Hello");
-  //   read = false;
-  // }
-
-  // delay(100);
-}
-
-void receiveEvent(int bytes) { 
-  
-  uint8_t buffer[20];
-  if (Wire.available()) {
-    // port = Wire.read();
-    Wire.readBytes(buffer, bytes);
-    Serial.println("here");
+  if (WifiHandler.checkResponse()) {
+    Serial.println("Packet received");
   }
-
-  // for (int x = 0; x < bytes; x++) {
-  //   Serial.println(buffer[x]);
-  // }
-
-  Wire.beginTransmission(0);
-  Wire.write("Hello");
-  Wire.endTransmission();
-
 }
+
+void espCallback() {
+  // Answer the interrupt with a request
+  uint8_t reqData[] = {GET_STIMULATION_PORT};
+  WifiHandler.request(ESP_ADDR, reqData, 1, 5);
+}
+
+
+// void receiveEvent(int bytes) { 
+
+//   uint8_t buffer[20];
+//   if (Wire.available()) {
+//     // port = Wire.read();
+//     Wire.readBytes(buffer, bytes);
+//     Serial.println("here");
+//   }
+
+//   // for (int x = 0; x < bytes; x++) {
+//   //   Serial.println(buffer[x]);
+//   // }
+
+//   Wire.beginTransmission(0);
+//   Wire.write("Hello");
+//   Wire.endTransmission();
+
+// }
+
+
+
+
+
+
 
 
 #include <SwitcherI2C.h>
 
 SwitcherI2C switcher = SwitcherI2C();
 
+SwitcherGlobalCommData commData;
+
+void receiveHandler(int bytes);
+void requestHandler();
+
 void setup1() {
-  switcher.init(8);
+
+  commData.port = 3;
+
+  switcher.init(ESP_ADDR, 0, &commData); 
+  switcher.getWireInstance().onReceive(receiveHandler);
+  switcher.getWireInstance().onRequest(requestHandler);
 }
 
 void loop1() {
 
-  uint8_t data[] = {10, 2, 3, 4};
-  // Serial.println(sizeof(data) / sizeof(uint8_t));
-  switcher.write(data, 4);
+  // uint8_t data[] = {10, 2, 3, 4};
+  // // Serial.println(sizeof(data) / sizeof(uint8_t));
+  // switcher.write(data, 4);
 
-  if (Wire1.available()) {
-    Serial.println("got something bcak");
-    // char stuff[15];
-    // Wire1.readBytes(stuff, 5);
-    // Serial.println(Wire1.readString());
-  }
+  // if (Wire1.available()) {
+  //   Serial.println("got something bcak");
+  //   // char stuff[15];
+  //   // Wire1.readBytes(stuff, 5);
+  //   // Serial.println(Wire1.readString());
+  // }
 
   delay(500);
 }
 
+void receiveHandler(int bytes) {
+  switcher.receive(bytes);
+}
+
+void requestHandler() {
+  switcher.answerRequest();
+}
 
 
 

@@ -2,17 +2,31 @@
 #define COMM_HANDLER_H
 
 #include <Arduino.h>
+#include <../CommCodes.h>
+
+typedef struct {
+  uint8_t stimPort;
+} MainGlobalCommData;
 
 class CommHandler {
   public:
     CommHandler();
+    bool init(MainGlobalCommData * mainGlobalCommData);
+    uint8_t decode(uint8_t * buffer, uint8_t buffSize, uint8_t * decoded);
+    uint8_t encode(uint8_t * buffer, uint8_t buffSize, uint8_t * encoded, uint8_t randint=0xFF);
+    uint8_t answerCommand(uint8_t);
+    uint8_t setCommand(uint8_t command, uint8_t data);
 
-    virtual bool init();
-    virtual bool receiveRespond(uint8_t receive_respond);
+  protected:
+    // void decode();
+    // uint8_t * encode(uint8_t * buffer);
+
+    uint8_t prevRandCheck;
+    bool awaitingData;
+    uint8_t awaitCommand;
 
   private:
-    void decode();
-    uint8_t * encode(uint8_t * buffer);
+    static MainGlobalCommData * mainGlobalCommData;
 
 };
 

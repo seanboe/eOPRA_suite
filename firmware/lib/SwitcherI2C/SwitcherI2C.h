@@ -3,20 +3,33 @@
 
 #include <Arduino.h>
 #include <Wire.h>
+#include <CommHandler.h>
 
 #include <../CommCodes.h>
 
-class SwitcherI2C { 
+typedef struct {
+  uint8_t port;
+} SwitcherGlobalCommData;
+
+class SwitcherI2C : CommHandler { 
   public:
     SwitcherI2C();
-
-    bool init(uint8_t peripheralAddress);
-
+    bool init(uint8_t peripheralAddress, uint8_t intPin, SwitcherGlobalCommData * commData);
     bool write(uint8_t * data, uint8_t dataSize);
+    bool receive(uint8_t bytes);
+    void answerRequest();
+    void interruptSwitcher();
+
+    TwoWire getWireInstance();
 
   private:
 
-    uint8_t peripheralAddress;
+    SwitcherGlobalCommData * commData;
+
+    uint8_t intPin;
+    uint8_t commandQueue;
+    bool dataQueued;
+
 
 };
 
