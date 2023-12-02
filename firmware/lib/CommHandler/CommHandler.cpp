@@ -5,10 +5,13 @@ CommHandler::CommHandler(){};
 
 bool CommHandler::init(MainGlobalCommData * mainGlobalCommData) {
   this->prevRandCheck = 0xFF;
-  this->awaitingData = false;
+  this->setRequest = false;
   this->awaitCommand = 0xFF;
+  this->prevTransmitAddr = 0xFF;
 
   this->mainGlobalCommData = mainGlobalCommData;
+
+  return true;
 }
 
 // To be redefined in child classes
@@ -38,6 +41,8 @@ uint8_t CommHandler::encode(uint8_t * data, uint8_t dataSize, uint8_t * encoded,
   if (dataSize + 3 > MAX_BUFFER)
     return 0xFF;
 
+  memset(encoded, 0, dataSize + 3);
+
   memcpy(encoded + 2, data, dataSize);
   encoded[0] = START;
 
@@ -55,10 +60,11 @@ uint8_t CommHandler::answerCommand(uint8_t command) {
   switch (command) {
     case GET_STIMULATION_PORT: return this->mainGlobalCommData->stimPort; break;
   }
+  return true;
 }
 
-uint8_t CommHandler::setCommand(uint8_t command, uint8_t data) {
-    switch (command) {
+void CommHandler::setCommand(uint8_t command, uint8_t data) {
+  switch (command) {
     case GET_STIMULATION_PORT: this->mainGlobalCommData->stimPort = data; break;
   }
 }

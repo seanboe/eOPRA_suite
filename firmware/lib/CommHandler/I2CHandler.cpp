@@ -2,7 +2,9 @@
 
 I2CHandler::I2CHandler() {};
 
-bool I2CHandler::init() {
+bool I2CHandler::init(MainGlobalCommData * commData) {
+
+  CommHandler::init(commData);
 
   // Look inside `Wire.cpp` for pin fuckery
   // Wire 0 is used for commanding the device
@@ -22,38 +24,35 @@ bool I2CHandler::request(uint8_t addr, uint8_t * commands, uint8_t lenCommands, 
   uint8_t buffer[buffSize];
 
   this->prevRandCheck = this->encode(commands, lenCommands, buffer);
+  if (this->prevRandCheck == 0xFF)
+    return false;
 
   Wire1.beginTransmission(addr);
   Wire1.write(buffer, buffSize);
   Wire1.endTransmission();
 
-  this->awaitingData = true;
-
+  this->setRequest = true;
   this->awaitCommand = commands[0];
-
-  delay(5);
-
-  // Request from is blocking, so the slave can take some time to process the receive and respond to the request
-  if (!Wire1.requestFrom(addr, reqSize))
-    return false;
+  this->prevTransmitAddr = addr;
 
   return true;
 
 }
 
 bool I2CHandler::checkResponse() {
-  if (!this->awaitingData)
-    return false;
+  if (this->setRequest)
+    Wire1.requestFrom(this->prevTransmitAddr, 4);
+    this->setRequest = false;
 
-  if (Wire.available()) {
+  if (Wire1.available()) {
 
-    uint8_t buffSize = Wire.available();
+    uint8_t buffSize = Wire1.available();
 
     if (buffSize > MAX_BUFFER)
       return false;
 
     uint8_t buffer[buffSize];
-    Wire.readBytes(buffer, buffSize);
+    Wire1.readBytes(buffer, buffSize);
 
     uint8_t data[buffSize - 3];
     uint8_t randInt = this->decode(buffer, buffSize, data);
@@ -63,11 +62,10 @@ bool I2CHandler::checkResponse() {
 
     this->setCommand(this->awaitCommand, data[0]);
 
+    return true;
   }
-
+  return false;
 }
-
-
 
 
 // bool I2CHandler::onRequest(uint8_t * data, uint8_t len) {

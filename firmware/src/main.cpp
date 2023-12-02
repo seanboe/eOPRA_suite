@@ -13,27 +13,39 @@ void espCallback();
 
 I2CHandler WifiHandler = I2CHandler();
 
+MainGlobalCommData commData;
 
 void setup() {
   Serial.begin(9600);
 
+  commData.stimPort = 0;
+
   pinMode(REC_INT, INPUT_PULLUP);
   attachInterrupt(REC_INT, espCallback, RISING);
 
-  WifiHandler.init();
+  WifiHandler.init(&commData);
 
 }
 
 void loop() {
   if (WifiHandler.checkResponse()) {
     Serial.println("Packet received");
+    Serial.println(commData.stimPort);
+  }
+
+
+  if (Serial.available()) {
+    char buffer[10];
+    Serial.readBytes(buffer, Serial.available());
+    espCallback();
+    Serial.println("Sent stuff!");
   }
 }
 
 void espCallback() {
   // Answer the interrupt with a request
   uint8_t reqData[] = {GET_STIMULATION_PORT};
-  WifiHandler.request(ESP_ADDR, reqData, 1, 5);
+  WifiHandler.request(ESP_ADDR, reqData, 1, 4);
 }
 
 
@@ -67,18 +79,20 @@ void espCallback() {
 
 SwitcherI2C switcher = SwitcherI2C();
 
-SwitcherGlobalCommData commData;
+SwitcherGlobalCommData switcherCommData;
 
 void receiveHandler(int bytes);
 void requestHandler();
 
 void setup1() {
 
-  commData.port = 3;
+  Serial.begin(9600);
 
-  switcher.init(ESP_ADDR, 0, &commData); 
-  switcher.getWireInstance().onReceive(receiveHandler);
-  switcher.getWireInstance().onRequest(requestHandler);
+  switcherCommData.port = 8;
+
+  switcher.init(ESP_ADDR, 0, &switcherCommData); 
+  Wire.onReceive(receiveHandler);
+  Wire.onRequest(requestHandler);
 }
 
 void loop1() {

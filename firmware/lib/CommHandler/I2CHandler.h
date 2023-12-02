@@ -14,7 +14,7 @@ class I2CHandler : CommHandler {
   public:
     I2CHandler();
 
-    bool init();
+    bool init(MainGlobalCommData * commData);
 
     // bool onRequest(uint8_t * data, uint8_t len);
     bool request(uint8_t addr, uint8_t * commands, uint8_t lenCommands, uint8_t reqSize);

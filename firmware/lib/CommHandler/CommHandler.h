@@ -15,18 +15,19 @@ class CommHandler {
     uint8_t decode(uint8_t * buffer, uint8_t buffSize, uint8_t * decoded);
     uint8_t encode(uint8_t * buffer, uint8_t buffSize, uint8_t * encoded, uint8_t randint=0xFF);
     uint8_t answerCommand(uint8_t);
-    uint8_t setCommand(uint8_t command, uint8_t data);
+    void setCommand(uint8_t command, uint8_t data);
 
   protected:
     // void decode();
     // uint8_t * encode(uint8_t * buffer);
 
     uint8_t prevRandCheck;
-    bool awaitingData;
+    bool setRequest;
     uint8_t awaitCommand;
+    uint8_t prevTransmitAddr;
 
   private:
-    static MainGlobalCommData * mainGlobalCommData;
+    MainGlobalCommData * mainGlobalCommData;
 
 };
 
