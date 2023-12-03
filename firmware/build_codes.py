@@ -1,5 +1,5 @@
 with open('CommCodes.yaml', 'r') as yaml_settings:
-  with open('./lib/TrafficControl/CommCodes.h', 'w') as CommCodes_h:
+  with open('./lib/CommCodes.h', 'w') as CommCodes_h:
 
     CommCodes_h.write("// ****** GENERATED ON COMPILE ******\n")
     CommCodes_h.write("\n")
@@ -11,8 +11,8 @@ with open('CommCodes.yaml', 'r') as yaml_settings:
     try:
       for yaml_line in yaml_lines:
         if yaml_line[0] == "#":
-          continue
-        if len(yaml_line) > 1:
+          CommCodes_h.write(f"//{yaml_line[1:]}")
+        elif len(yaml_line) > 1:
           key, value = yaml_line.split(":")
           CommCodes_h.write(f"#define {key.upper()} {value.strip()}\n")
         else:

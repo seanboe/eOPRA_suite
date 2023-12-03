@@ -10,9 +10,11 @@
 #define EXT_RX        1
 
 // I2C
+// Port on which switcher is the master
 #define SLAVE_SDA1    18
 #define SLAVE_SCL1    19
 
+// Port on which switcher is a slave
 #define MASTER_SDA0   20
 #define MASTER_SCL0   21
 

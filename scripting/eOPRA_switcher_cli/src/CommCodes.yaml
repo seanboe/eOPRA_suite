@@ -1,7 +1,12 @@
+# Maximum buffer size for sending / receiving
+max_buffer: 10
+
 # Meta Commands
 start:  0x01
 command_break: 0x02
 stop:   0xFF
+
+# UART / EXTERNAL COMMANDS
 
 # Set Commands
 set_port: 0x10
@@ -13,8 +18,7 @@ set_display: 0x15
 set_buzzer: 0x16
 
 
-
-
 # Get Commands
 get_time: 0x50
 get_devices: 0x51
+get_stimulation_port: 0x52

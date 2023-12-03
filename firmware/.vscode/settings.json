@@ -1,6 +1,13 @@
 {
   "files.associations": {
     "cmath": "cpp",
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "readme": "cpp",
+    "exception": "cpp",
+    "memory_resource": "cpp",
+    "iosfwd": "cpp",
+    "new": "cpp",
+    "ostream": "cpp",
+    "streambuf": "cpp"
   }
 }
