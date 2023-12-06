@@ -3,3 +3,8 @@ eOPRA_interface/eOPRA_interface-backups
 .DS_Store
 scripting/.DS_Store
 scripting/eOPRA_switcher_cli/src/code_structure.md
+offboard_controller/.pio
+offboard_controller/.vscode
+scripting/tools/.venv
+wifi_firmware/.pio
+wifi_firmware/.vscode
