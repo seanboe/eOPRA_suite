@@ -5,6 +5,7 @@
 #include <../lib/CommCodes.h>
 #include "utilities.h"
 
+#include <SPI.h>
 
 // void requestEvent();
 // void receiveEvent(int bytes);
@@ -42,6 +43,9 @@ void setup() {
   // Wire.setSDA(MASTER_SDA0);
   // Wire.setSCL(MASTER_SCL0);
   Serial.begin(115200);
+  // Serial1.setTX(0);
+  // Serial1.setRX(1);
+  Serial1.begin(115200);
   // Wire.begin(8);                // join i2c bus with address #8
   // Wire.onRequest(requestEvent); // register event
   // Wire.onReceive(receiveEvent);
@@ -64,9 +68,13 @@ void setup() {
 
 void loop() {
 
-    digitalWrite(ENC_CTL_0, HIGH);
-    digitalWrite(ENC_CTL_1, LOW);
-    digitalWrite(ENC_CTL_2, HIGH);
+  if (Serial1.available()) {
+    Serial.println(Serial1.readStringUntil('\n'));
+  }
+
+  digitalWrite(ENC_CTL_0, HIGH);
+  digitalWrite(ENC_CTL_1, LOW);
+  digitalWrite(ENC_CTL_2, HIGH);
 
   if (ISRTriggered) {
     Serial.print("Triggered | ");
@@ -80,6 +88,7 @@ void loop() {
 
   }
   ISRTriggered = false;
+
   
 }
 
